@@ -181,3 +181,21 @@ class MatchTitlesTwoToOnePipe(MergeToOnePipe):
             entry_title,
             lambda a_keys, b_keys: a_keys.intersection(b_keys))
 
+class IncludeIfMatchingAuthor(object):
+    
+  
+  def __init__(self, source_pipe):
+        
+    self.source_pipe = source_pipe
+
+  def pull(self):
+    
+     newdatabase = self.source_pipe.pull()
+     result = BibDatabase()
+   
+     for entry in newdatabase.get_entry_list():
+            if 'anthor' in entry:
+                result.get_entry_list().append(entry)
+
+     return result
+
