@@ -1,0 +1,226 @@
+@inproceedings{8377636,
+ abstract = {DevOps, as a growing development practice that aims to enable faster development and efficient deployment of applications without compromising on quality, is often hampered by long cycle times. One contributing factor to long cycle times in DevOps is long build time. Automated testing in continuous integration is one of the build stages that is highly prone to long run-time due to software complexity and evolution, and inefficient due to unoptimized testing approaches. To be cost-effective, testing in continuous integration needs to use only a fast-running set of comprehensive tests that are able to ensure the level of quality needed for deployment to production. Known approaches use time-aware test selection methods to improve time-efficiency of continuous integration testing by providing optimized combinations and order of tests with respect to decreased run-time. However, focusing on time-efficiency as the sole criterion in DevOps often jeopardizes the quality of software deliveries. This paper proposes a technique that integrates fault-based and risk-based test selection and prioritization optimized for low run-time, to improve time-effectiveness of continuous integration testing, and thus reduce long cycle times in DevOps, without compromising on quality. The technique has been evaluated in testing of a large-scale configurable software in continuous integration, and has shown considerable improvement over industry practice with respect to time-efficiency.},
+ author = {Dusica Marijan and Marius Liaaen and Sagar Sen},
+ booktitle = {2018 IEEE 42nd Annual Computer Software and Applications Conference (COMPSAC)},
+ keywords = {Fault detection, Indexes, Industries, Optimization, Production, Software, Testing, DevOps, Continuous integration testing, Test prioritization, History-based test prioritization, Risk-based test optimization, Fault-based test prioritization},
+ month = {July},
+ pages = {22-27},
+ title = {DevOps Improvements for Reduced Cycle Times with Integrated Test Optimizations for Continuous Integration},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8377636},
+ year = {2018}
+}
+
+@inproceedings{8377640,
+ abstract = {Multi-objective evolutionary algorithm (MOEA) with the constraint solving has been successfully applied to address the configuration optimization problem in software product line (SPL), for example, the state-of-the-art SATIBEA algorithm. However, each different MOEA with special search operator demonstrates the different strength and weakness in terms of optimality and convergence speed. The SATIBEA just combines the SAT (Boolean satisfiability problem) constraint solving with the Indicator-Based Evolutionary Algorithm (IBEA) for evaluating the algorithm performance. In this paper, we propose six hybrid algorithms which combine the SAT solving with different MOEAs. Case study is based on five large-scale, rich-constrained and real-world SPLs. Empirical results demonstrate that SATMOCell algorithm obtains a competitive optimization performance to the state-of-the-art that outperforms the SATIBEA in terms of quality Hypervolume metric for 2 out of 5 SPLs within the same time budget. Moreover, the convergence speed of SATMOCell and SATssNSGA2 is comparable after 10min terminal times. Particularly, the Hypervolume value of SATssNSGA2 reports the average improvement of 1.33% after 20min terminal times.},
+ author = {Huiqun Yu and Kai Shi and Jianmei Guo and Guisheng Fan and Xingguang Yang and Liqiong Chen},
+ booktitle = {2018 IEEE 42nd Annual Computer Software and Applications Conference (COMPSAC)},
+ keywords = {Convergence, Evolutionary computation, Optimization, Sociology, Software, Software product lines, Statistics, Constraint solving, Multi-objective evolutionary algorithm, Search-based software engineering, Software product lines},
+ month = {July},
+ pages = {54-63},
+ title = {Combining Constraint Solving with Different MOEAs for Configuring Large Software Product Lines: A Case Study},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8377640},
+ year = {2018}
+}
+
+@inproceedings{8377644,
+ abstract = {Android GUI testing is an important research field to maintain software quality of Android apps. Although many GUI testing schemes have been investigated in the past, the discussion of exploration event scheduling has not been investigated comprehensively for the event replay process. Based on the component priority relationship, this study proposes a novel exploration event scheduling scheme called CPR to reduce the number of the testing events in the replay process. Compared with the breadth-first traversal scheme, the proposed CPR scheme can reduce up to 62% of testing events for achieving the same component coverage, and up to 69% of testing events for layout traversal. Compared with the depth-first traversal scheme, CPR can reduce up to 15% of testing events for achieving the same component coverage, and up to 42% of testing events for layout traversal. With respect to the testing time, CPR can achieve the best performance for most of the AUTs in the empirical study. The results of the empirical experiments show that the proposed CPR scheduling scheme can have the benefits in improving the testing performance.},
+ author = {Chia-Hui Lin and Cheng-Zen Yang and Peng Lu and Tzu-Heng Lin and Zhi-Jun You},
+ booktitle = {2018 IEEE 42nd Annual Computer Software and Applications Conference (COMPSAC)},
+ keywords = {Androids, Dynamic scheduling, Graphical user interfaces, Humanoid robots, Layout, Testing, Event Scheduling, GUI Testing, Priority Tree, Replay Events},
+ month = {July},
+ pages = {90-99},
+ title = {Exploration Scheduling for Replay Events in GUI Testing on Android Apps},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8377644},
+ year = {2018}
+}
+
+@inproceedings{8377662,
+ abstract = {In this paper we consider a statistical method to prioritize software test cases with operational profile, where the system behavior is described by a Markov reward model. Especially, we introduce software code metrics as reward parameters and apply the resulting Markov reward model to the test case prioritization problem, where our research question is set as how software code metrics affect the test case prioritization. In a numerical example with a real application software, we embed some seeding faults in advance and carry out 1,000 random test experiments. It is shown that our metrics-based test case prioritization can reduce a large amount of testing effort efficiently.},
+ author = {Masataka Ozawa and Tadashi Dohi and Hiroyuki Okamura},
+ booktitle = {2018 IEEE 42nd Annual Computer Software and Applications Conference (COMPSAC)},
+ keywords = {Markov processes, Software, Software measurement, Software reliability, Unified modeling language, test case prioritization, operational profile, software reliability, software code metrics, Markov reward model},
+ month = {July},
+ pages = {245-250},
+ title = {How Do Software Metrics Affect Test Case Prioritization?},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8377662},
+ year = {2018}
+}
+
+@inproceedings{8377663,
+ abstract = {Test case prioritization is widely used in testing with the purpose of detecting faults as early as possible. Most existing techniques exploit coverage to prioritize test cases based on the hypothesis that a test case with higher coverage is more likely to catch bugs. Statement coverage and function coverage are the two widely used coverage granularity. The former typically achieves better test case prioritization in terms of fault detection capability, while the latter is more efficient because it incurs less overhead. In this paper we argue that static information such as statement and function coverage may not be the best criteria for guiding dynamic executions. Executions that cover the same set of statements /functions can may exhibit very different behavior. Therefore, the abstraction that reduces program behavior to statement/function coverage can be too simplistic to predicate fault detection capability. We propose a new approach that exploits function call sequences to prioritize test cases. This is based on the observation that the function call sequences rather than the set of executed functions is a better indicator of program behavior. Test cases that reveal unique function call sequences may have better chance to encounter faults. We choose function instead of statement sequences due to the consideration of efficiency. We have developed and implemented a new prioritization strategy AGC (Additional Greedy method Call sequence), that exploit function call sequences. We compare AGC against existing test case prioritization techniques on eight real-world open source Java projects. Our experiments show that our approach outperforms existing techniques on large programs (but not on small programs) in terms of bug detection capability. The performance shows a growth trend when the size of program increases.},
+ author = {Jianlei Chi and Yu Qu and Qinghua Zheng and Zijiang Yang and Wuxia Jin and Di Cui and Ting Liu},
+ booktitle = {2018 IEEE 42nd Annual Computer Software and Applications Conference (COMPSAC)},
+ keywords = {Computer bugs, Fault detection, Image edge detection, Instruments, Software, Subspace constraints, Testing, software testing, test case prioritization, call behavior graph},
+ month = {July},
+ pages = {251-256},
+ title = {Test Case Prioritization Based on Method Call Sequences},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8377663},
+ year = {2018}
+}
+
+@inproceedings{8377833,
+ abstract = {Test case recording and playback technology, normally implemented as a test case recorder, has been widely applied in the industry. One of the key research topics is how to determine if a web page has entered a ready state before the recorder can perform the next test command? If a web element is incorrectly selected during playback, the related test command will fail to process. This research puts forward four kinds of automatic waiting mechanism for playing test commands. The experiment result shows that the waiting time can be determined dynamically and automatically, so that testers do not have to manually add waiting commands thereby reducing the time and error of artificial discrimination. The proposed mechanisms were implemented as parts of the SideeX open source web testing software and have been further adopted by the new Selenium IDE and Katalon Recorder. Currently, over 60,000 web testers around the world run the mechanisms.},
+ author = {Shin-Jie Lee and Yu-Xian Chen and Shang-Pin Ma and Wen-Tin Lee},
+ booktitle = {2018 IEEE 42nd Annual Computer Software and Applications Conference (COMPSAC)},
+ keywords = {Browsers, IEEE Sections, Navigation, Selenium, Software, Testing, Web pages, Automated web application testing, test case recording and playback, automatic-wait},
+ month = {July},
+ pages = {75-80},
+ title = {Test Command Auto-Wait Mechanisms for Record and Playback-Style Web Application Testing},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8377833},
+ year = {2018}
+}
+
+@inproceedings{8377903,
+ abstract = {Regression testing has been widely used in GUI software testing. For the reason of economy, the prioritization of test cases is particularly important. However, few studies discussed test case prioritization (TCP) for GUI software. Based on GUI software features, a two-layer model is proposed to assist the test case prioritization in this paper, in which, the outer layer is an event handler tree (EHT), and the inner layer is a function call graph (FCG). Compared with the conventional methods, more source code information is used based on the two-layer model for prioritization. What is more, from a global perspective, centrality measure, a complex network viewpoint is used to highlight the importance of modified functions for specific version TCP. The experiment proved the effectiveness of this model and this method},
+ author = {Yijie Ren and Bei-Bei Yin and Bin Wang},
+ booktitle = {2018 IEEE 42nd Annual Computer Software and Applications Conference (COMPSAC)},
+ keywords = {Complex networks, Graphical user interfaces, Object oriented modeling, Regression tree analysis, Software, Software testing, GUI Testing, Regression Testing, Test Case Prioritization, Event Handler Tree, Complex Network},
+ month = {July},
+ pages = {454-459},
+ title = {Test Case Prioritization for GUI Regression Testing Based on Centrality Measures},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8377903},
+ year = {2018}
+}
+
+@inproceedings{8387679,
+ abstract = {The number of cyber-physical features within automotive systems rises significantly. Features are often not independent from each other, i.e., they interact. Such interaction is either known and desired or unknown and undesired. We propose a holistic approach consisting of four different quality assurance measures to tame undesired and optimize desired interaction: A generic feature framework, a central feature coordinator, an analytical measure based on coupling metrics and a dynamic feature testing approach. In this paper, we present these four measures as well as their implementation and evaluation.},
+ author = {Sven Dominka and Dominik Ertl and Michael Dübner and Romana Wiesinger and Hermann Kaindl},
+ booktitle = {2018 IEEE Industrial Cyber-Physical Systems (ICPS)},
+ keywords = {Couplings, Engines, Feature extraction, Heating systems, Measurement, Software, Testing, Cyber-physical system, analytical quality measure, automotive, constructive quality measure, embedded software, feature interaction, testing},
+ month = {May},
+ pages = {324-329},
+ title = {Taming and optimizing feature interaction in software-intensive automotive systems},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8387679},
+ year = {2018}
+}
+
+@inproceedings{8389045,
+ abstract = {Cloud computing has changed the way to use computing resources which include computers, network, data storage and application services. Due to this the way of management and delivery of services, technologies and solutions also have changed. The new environment requires software testing methods, technologies and tools also to be changed. To ensure high quality of cloud applications under development, developers are expected to perform testing of quality and correctness of the developed software. This research discusses the characteristics of software testing in a cloud computing environment. This research discusses the definition, characteristics, types, advantages and challenges of cloud computing software testing.},
+ author = {Nirmal Kumar Gupta},
+ booktitle = {2018 4th International Conference on Recent Advances in Information Technology (RAIT)},
+ keywords = {Cloud computing, Computational modeling, Software as a service, Software testing, Task analysis, Cloud Computing, Cloud Testing, PaaS, SaaS, Software Testing, TaaS},
+ month = {March},
+ pages = {1-6},
+ title = {Advancements in cloud computing software testing research},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8389045},
+ year = {2018}
+}
+
+@inproceedings{8389562,
+ abstract = {Software Testing is a process, which involves, executing of a software program/application and finding all errors or bugs in that program/application so that the result will be a defect-free software. Quality of any software can only be known through means of testing (software testing). Through the advancement of technology around the world, there increased the number of verification techniques and methods to test the software before it goes to production and off course to market. Automation Testing has made its impact in the testing process. Now-a-days, most of the software testing is done with the automation tools which not only lessens the number of people working around that software but also the errors that can be escaped through the eyes of the tester. Automation testing contains test cases which makes the work easy to capture different scenarios and store them. Therefore, software automation testing process plays a vital role in the software testing success. This study aims in knowing different types of software testing, software testing techniques and tools and to compare manual testing versus automation testing.},
+ author = {Karuturi Sneha and Gowda M Malle},
+ booktitle = {2017 International Conference on Energy, Communication, Data Analytics and Soft Computing (ICECDS)},
+ keywords = {Automation, Computer bugs, Manuals, Software, Software testing, Tools, Software testing, Testing techniques, automation, testing tools},
+ month = {August},
+ pages = {77-81},
+ title = {Research on software testing techniques and software automation testing tools},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8389562},
+ year = {2017}
+}
+
+@inproceedings{8391869,
+ abstract = {The importance of mobile applications is gaining momentum because nowadays mobile application are using more frequently for personal and business purposes. Due to this reason, the development of mobile applications is also increasing day by day, so developers of mobile applications are frequently developing and deploying the mobile applications in the short interval of time. For assuring the functionality of the mobile application, we adopt a GUI based testing technique known as model based testing. In the model based testing, the functionality of the existing applications is tested by the external behavior of the system so basically this technique comes in the area of black-box testing. By leveraging the recent research, it is identified that the model based testing in the context of mobile applications testing; are facing problems such as large number of generated test cases and inadequate testing coverage of the application. The newly proposed technique is for generating the minimal functional test cases with the maximum coverage of the application. The proposed technique facilitates the developers/testers to test the functionality of the mobile application in short interval of time by consuming less effort.},
+ author = {Ahmed Mateen and Khizar Abbas},
+ booktitle = {2017 IEEE International Conference on Power, Control, Signals and Instrumentation Engineering (ICPCSI)},
+ keywords = {Androids, Graphical user interfaces, Mobile applications, Mobile communication, Operating systems, Smart phones, Testing, Event Flow Graph, Model based testing, event coverage, functional test case generation, mobiGUITAR},
+ month = {September},
+ pages = {90-95},
+ title = {Optimization of model based functional test case generation for android applications},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8391869},
+ year = {2017}
+}
+
+@inproceedings{8392179,
+ abstract = {The process of optimization can be improved through the range of Test input data which are given as an input to the build under test. The output of the testcase execution are evaluated. The document or procedure to clarify whether the test cases has passed or failed is called as &#x201C;test oracle &#x201D;problem. The oracle problem helps to distinguish the correct behavior of the software from defective behavior of the software. The range of potential inputs can be very huge, even for a terribly small structures under test. We had used three different approach which do this without compromising on the coverage achieved. Testcases are generated and are checked with respect to the testcases expected behavior.},
+ author = {J Albert Mayan and M D Anto Praveena and Telkar Bharath Rao and Uravakonda Uday Sagar},
+ booktitle = {2017 IEEE International Conference on Power, Control, Signals and Instrumentation Engineering (ICPCSI)},
+ keywords = {Conferences, Contracts, Instruments, Process control, Software, Software engineering, Testing, Deterministic call Software Testing, Oracle problem, component state, method call, pseudo linear contract, state machine},
+ month = {September},
+ pages = {2559-2563},
+ title = {Optimized test data generation over suspicious implementation of oracle problem},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8392179},
+ year = {2017}
+}
+
+@manual{8392559,
+ abstract = {https://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=8392559},
+ keywords = {IEC Standards, IEEE Standards, ISO Standards, Product life cycle management, Software maintenance, Sofware engineering, Sofware measurement, Systems engineering and theory, acquisition, agreement, architecture, assessment, audit, configuration management, decision management, design, development, disposal, enabling system, implementation, information management, infrastructure, integration, life cycle, life cycle model, life cycle stages, maintenance, measurement, operation, planning, portfolio, process, process improvement, process reference model, process tailoring, process view, product, quality management, requirements, retirement, risk management, service, software, stages, stakeholder requirements, supply, system, system structure, system-of-interest, tailoring, transition, validation, verification},
+ month = {November},
+ pages = {1-462},
+ title = {ISO/IEC/IEEE International Standard - Systems and software engineering -- Software life cycle processes - Redline},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8392559},
+ year = {2017}
+}
+
+@inproceedings{8394833,
+ abstract = {The aim of this paper is to argue why we should adopt a Human-based approach to diminish the fuzziness of intelligence concept for machines in particular for unmanned aerial vehicles UAV. The approach is involved in UAV intelligence assessment in order to increase trust in decisions made by controllers in uncertain situations. This work is a part of a proposal aiming at making explicit that human intelligence can be projected over machines as we want to reach out to the human level machine intelligence.},
+ author = {Marwa Brichni and Said Gattoufi},
+ booktitle = {2018 5th International Conference on Control, Decision and Information Technologies (CoDIT)},
+ keywords = {Artificial intelligence, Complexity theory, Machine intelligence, Measurement, Task analysis, Uncertainty, Unmanned aerial vehicles},
+ month = {April},
+ pages = {228-232},
+ title = {HLMIQ of Aircraft Control Software for Control Intelligence measurement},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8394833},
+ year = {2018}
+}
+
+@article{8395015,
+ abstract = {Web application firewalls (WAFs) are an essential protection mechanism for online software systems. Because of the relentless flow of new kinds of attacks as well as their increased sophistication, WAFs have to be updated and tested regularly to prevent attackers from easily circumventing them. In this paper, we focus on testing WAFs for SQL injection attacks, but the general principles and strategy we propose can be adapted to other contexts. We present ML-Driven, an approach based on machine learning and an evolutionary algorithm to automatically detect holes in WAFs that let SQL injection attacks bypass them. Initially, ML-Driven automatically generates a diverse set of attacks and submits them to the system being protected by the target WAF. Then, ML-Driven selects attacks that exhibit patterns (substrings) associated with bypassing the WAF and evolves them to generate new successful bypassing attacks. Machine learning is used to incrementally learn attack patterns from previously generated attacks according to their testing results, i.e., if they are blocked or bypass the WAF. We implemented ML-Driven in a tool and evaluated it on ModSecurity, a widely used open-source WAF, and a proprietary WAF protecting a financial institution. Our empirical results indicate that ML-Driven is effective and efficient at generating SQL injection attacks bypassing WAFs and identifying attack patterns.},
+ author = {Dennis Appelt and Cu D. Nguyen and Annibale Panichella and Lionel C. Briand},
+ journal = {IEEE Transactions on Reliability},
+ keywords = {Databases, Firewalls (computing), SQL injection, Servers, Testing, Tools, SQL injection (SQLi), Software security testing, web application firewall (WAF)},
+ month = {July},
+ pages = {1-25},
+ title = {A Machine-Learning-Driven Evolutionary Approach for Testing Web Application Firewalls},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8395015},
+ year = {2018}
+}
+
+@article{8396273,
+ abstract = {Critical systems that integrate software components (e.g., from third-parties) need to address the risk of residual software defects in these components. Software fault injection is an experimental solution to gauge such risk. Many error models have been proposed for emulating faulty components, such as by injecting error codes and exceptions, or by corrupting data with bit-flips, boundary values, and random values. Even if these error models have been able to find breaches in fragile systems, it is unclear whether these errors are in fact representative of software faults. To pursue this open question, we propose a methodology to analyze how software faults in <formula><tex>$C/C_{++}$</tex></formula> software components turn into errors at components&#x0027; interfaces (interface error propagation), and present an experimental analysis on what, where, and when to inject interface errors. The results point out that the traditional error models, as used so far, do not accurately emulate software faults, but that richer interface errors need to be injected, by: injecting both fail-stop behaviors and data corruptions; targeting larger amounts of corrupted data structures; emulating silent data corruptions not signaled by the component; combining bit-flips, boundary values, and data perturbations.},
+ author = {Roberto Natella and Stefan Winter and Domenico Cotroneo and Neeraj Suri},
+ journal = {IEEE Transactions on Software Engineering},
+ keywords = {Computer bugs, Fault tolerance, Perturbation methods, Software, Testing, Unified modeling language, Dependability, Error Models, Error Propagation, Fault Injection, Software Components, Software Fault Tolerance},
+ month = {July},
+ pages = {1-1},
+ title = {Analyzing the Effects of Bugs on Software Interfaces},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8396273},
+ year = {2018}
+}
+
+@inproceedings{8396539,
+ abstract = {DO-178C and its supplement DO-331 provide a set of objectives to be achieved for any development of airborne software systems when model-driven development approaches are in use. Fail-safeMBT is an academic recently proposed model-based approach for testing safety-critical systems. Fail-safeMBT is a potential innovative testing process that needs compelling arguments to be adopted for the development of aeronautical software. In this paper, we reduce the gap between industrial settings and academic settings by adopting the safety case approach and derive substantiation data aimed at arguing Fail-safeMBT compliance with the standards. We explain Fail-safeMBT processes in compliance with software process engineering Meta-Model 2.0, then apply Fail-safeMBT on the Autopilot system. Finally, we link Fail-safeMBT outputs to DO-178/DO-331 process elements, then we derive a substantiation from Fail-safeMBT outputs to support the compelling arguments for achieving certification objectives. Thus, we provide a validation of Fail-safeMBT in the avionic domain.},
+ author = {Aiman Gannous and Anneliese Andrews and Barbra Gallina},
+ booktitle = {2018 IEEE Aerospace Conference},
+ keywords = {Aerospace electronics, Safety, Software, Software engineering, Standards, Task analysis, Testing},
+ month = {March},
+ pages = {1-18},
+ title = {Bridging the gap between testing and safety certification},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8396539},
+ year = {2018}
+}
+
+@inproceedings{8397165,
+ abstract = {Despite great advances in different software testing areas, one important challenge, achieving an automated test oracle, has been overlooked by academia and industry. Among various approaches for constructing a test oracle, machine learning techniques have been successful in recent years. However, there are some situations in which the existing machine learning based oracles have deficiencies. These situations include testing of applications with low observability, such as embedded software and multimedia software programs. There are also cases in testing embedded software in which explicit historical data in form of input-output relationships is not available, and situations in which the comparison between expected results and actual outputs is impossible or hard. Addressing these deficiencies, this paper proposes a new black box solution to construct automated oracles which can be applied to embedded software and other programs with low observability. To achieve this, we have employed an Artificial Neural Network (ANN) algorithm to build a model which merely requires program's input values as well as corresponding pass/fail outcome, as the training set. We have conducted extensive experiments on several benchmarks. The results manifest the applicability of the proposed approach to software systems with low observability as well as its higher accuracy in comparison to a well-known machine learning based method.},
+ author = {Farshad Gholami and Niousha Attar and Hassan Haghighi and Mojtaba Vahidi Asl and Meysam Valueian and Saina Mohamadyari},
+ booktitle = {2018 Real-Time and Embedded Systems and Technologies (RTEST)},
+ keywords = {Embedded software, Hardware, Machine learning, Observability, Testing, Training},
+ month = {May},
+ pages = {104-111},
+ title = {A classifier-based test oracle for embedded software},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8397165},
+ year = {2018}
+}
+
+@article{8398472,
+ abstract = {A new algebraic system, test algebra (<formula><tex>$mathsf{TA}$</tex></formula>), is proposed for identifying faults in combinatorial testing for software-as-a-service (SaaS) applications. In the context of cloud computing, SaaS is a new software delivery model, in which mission-critical applications are composed, deployed, and executed on cloud platforms. Testing SaaS applications is challenging because new applications need to be tested once they are composed, and prior to their deployment. A composition of components providing services yields a configuration providing an SaaS application. While individual components in the configuration may have been thoroughly tested, faults still arise due to interactions among the components composed, making the configuration faulty. When there are <formula><tex>$k$</tex></formula> components, combinatorial testing algorithms can be used to identify faulty interactions with <formula><tex>$t$</tex></formula> or fewer components, for some threshold <formula><tex>$2 le t le k$</tex></formula> on the size of interactions considered. In general, these methods do not identify specific faults, but rather indicate the presence or absence of some faults. To identify specific faults, an adaptive testing regime repeatedly constructs and tests configurations in order to determine, for each interaction of interest, whether it is faulty or not. In order to perform such testing in a loosely coupled distributed environment such as the cloud, it is imperative that testing results can be combined from many different servers. The <formula><tex>$mathsf{TA}$</tex></formula> defines rules to permit results to be combined, and to identify the faulty interactions. Using the <formula><tex>$mathsf{TA}$</tex></formula>, configurations can be tested concurrently on different servers and in any order. The <formula><tex>$mathsf{TA}$</tex></formula> always keeps the high reduction rate of potential faulty configurations in fault location analysis.},
+ author = {Guanqiu Qi and Wei-Tek Tsai and Charles J. Colbourn and Jie Luo and Zhiqin Zhu},
+ journal = {IEEE Transactions on Reliability},
+ keywords = {Cloud computing, Fault location, Program processors, Software as a service, Testing, Algebra, cloud computing, combinatorial testing (CT), fault location analysis, software-as-a-service (SaaS)},
+ month = {July},
+ pages = {1-30},
+ title = {Test-Algebra-Based Fault Location Analysis for the Concurrent Combinatorial Testing},
+ url = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8398472},
+ year = {2018}
+}
+

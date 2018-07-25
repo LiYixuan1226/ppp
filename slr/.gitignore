@@ -1,0 +1,6 @@
+tests/.cache
+*.pyc
+\#*
+*.bak
+*.sav
+.idea/
