@@ -113,8 +113,8 @@ def make_exclude_terms_match_condition(field_keys, terms):
             term = term.lower()
             for field_key in field_keys:
                 if term in entry.get(field_key, "").lower():
-                    return True
-        return False
+                    return False
+        return True
 
     return exclude_terms_match_condition
 
@@ -198,4 +198,6 @@ class IncludeIfMatchingAuthor(object):
                 result.get_entry_list().append(entry)
 
      return result
+
+
 

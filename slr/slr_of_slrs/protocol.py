@@ -1,4 +1,4 @@
-from slirm.retrievers import FileRetriever, CachingRetriever
+from slirm.retrievers import IEEEXploreRetrieve, CachingRetriever
 from slirm.filter import Concatenation, DateRangeFilter, DuplicateEntryFilter, ExcludeKeysFilter, ExcludeTermFilter, \
     IncludeKeysFilter
 from slirm.requesters import FileWriterRequester
@@ -25,45 +25,25 @@ with open('excluded_keys.txt', mode='r', encoding='utf-8') as excluded_keys_file
     excluded_keys = set(excluded_keys_file.read().split("\n"))
 
 with \
-        open('Stage1.bib', mode='r', encoding='utf-8') as stage_1_file, \
         open('included_keys.txt', mode='a', encoding='utf-8') as included_keys_file, \
         open('excluded_keys.txt', mode='a', encoding='utf-8') as excluded_keys_file, \
         open('slr.bib', encoding='utf-8', mode='w', newline='') as found_file:
 
-    file_retriever = CachingRetriever(FileRetriever(stage_1_file))
+    query = 'systematic literature review'
+    api_key = 'xxbuhzj7q5zfednrb9j49yzq'
+    ieee_xplore_retriever = CachingRetriever(IEEEXploreRetrieve([query], api_key))
 
-    stage_1_count = CountEntries(file_retriever, "Found [%d] entries in the file.")
+    stage_1_count = CountEntries(ieee_xplore_retriever, "Found [%d] entries in the search results.")
 
     duplicate_key_filter = DuplicateEntryFilter(stage_1_count, entry_title)
 
     stage_2_count = CountEntries(duplicate_key_filter, "Found [%d] after removing duplicates.")
 
-    date_range_filter = DateRangeFilter(stage_2_count, date(2000, 1, 1), date(2018, 12, 31))
+    date_range_filter = DateRangeFilter(stage_2_count, date(2004, 1, 1), date(2018, 7, 31))
 
     stage_3_count = CountEntries(date_range_filter, "Found [%d] entries after filtering dates.")
 
-
-    terms = [
-        'Chemical',
-        'Chromatography',
-        'Electromagnetic',
-        'Electronic',
-        'Transmission',
-        'Geography',
-        'Microwave',
-        'Bio',
-        'Surg',
-        'Building',
-        'Law',
-        'Ocean',
-        'Alco',
-        'Genetics',
-        'Carbon',
-        'Electronic',
-        'Dataware',
-        'Chapter',
-        'Robot',
-        'Medicine']
+    terms = []
 
     fields = ['keywords', 'journal', 'booktitle', 'title']
 

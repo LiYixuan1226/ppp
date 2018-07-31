@@ -7,6 +7,6 @@ class FileRetriever:
         self.input_file = input_file
 
     def pull(self):
-        bibtex_parser = BibTexParser()
+        bibtex_parser = BibTexParser(common_strings=True)
         self.input_file.seek(0)
         return bibtex_parser.parse(self.input_file.read())

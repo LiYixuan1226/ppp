@@ -1,0 +1,9 @@
+setup.cfg
+setup.py
+./slirm/__init__.py
+Slirm.egg-info/PKG-INFO
+Slirm.egg-info/SOURCES.txt
+Slirm.egg-info/dependency_links.txt
+Slirm.egg-info/requires.txt
+Slirm.egg-info/top_level.txt
+slirm/__init__.py

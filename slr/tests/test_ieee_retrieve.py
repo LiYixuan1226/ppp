@@ -14,7 +14,7 @@ class IEEEXploreRetrieveTestCase(unittest.TestCase):
         ieee_xplore_retrieve = IEEEXploreRetrieve([query], api_key)
         bibtex_database = ieee_xplore_retrieve.pull()
 
-        self.assertGreater(0, len(bibtex_database.get_entry_list()))
+        self.assertGreater(len(bibtex_database.get_entry_list()), 0)
 
 
 if __name__ == '__main__':

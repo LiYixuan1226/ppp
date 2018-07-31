@@ -136,6 +136,10 @@ class IEEEXploreRetrieve(object):
 
         for query in self.queries:
             url = url_template % (query, self.api_key)
-            response = requests.get(url, cookies=self.cookies, headers=headers)
+            try:
+                response = requests.get(url, cookies=self.cookies, headers=headers)
+            except ConnectionError:
+                # TODO Wrap connection error with a Pipeline Exception.
+                return None
 
         return convert_ieee_xplore_json_to_bibtex_db(response.text)
