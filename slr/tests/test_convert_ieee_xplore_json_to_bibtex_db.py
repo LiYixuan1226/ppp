@@ -9,8 +9,8 @@ class ConvertIEEEXploreJSONToBibTeXTestCase(unittest.TestCase):
     def test_convert_ieee_xplore_json_to_bibtex_db(self):
 
         with \
-                open('tests/test_convert_ieee_xplore_json_to_bibtex_db.json') as test_input_file, \
-                open('tests/test_convert_ieee_xplore_json_to_bibtex_db.bib') as test_output_file:
+                open("test_convert_ieee_xplore_json_to_bibtex_db.json") as test_input_file, \
+                open("test_convert_ieee_xplore_json_to_bibtex_db.bib") as test_output_file:
             json_string = test_input_file.read()
 
             bibtex_database = convert_ieee_xplore_json_to_bibtex_db(json_string)

@@ -182,8 +182,11 @@ class MatchTitlesTwoToOnePipe(MergeToOnePipe):
             lambda a_keys, b_keys: a_keys.intersection(b_keys))
 
 class IncludeIfMatchingAuthor(object):
+    
+  
   def __init__(self, source_pipe):
-         self.source_pipe = source_pipe
+        
+    self.source_pipe = source_pipe
 
   def pull(self):
     

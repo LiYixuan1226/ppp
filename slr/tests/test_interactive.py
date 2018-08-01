@@ -9,9 +9,9 @@ class InteractiveTestCase(unittest.TestCase):
 
     def test_interactive(self):
         with \
-                open('tests/test_interactive.bib', mode='r') as input_file, \
-                open('tests/test_interactive_included_keys_file.txt', mode='a') as included_keys_file, \
-                open('tests/test_interactive_excluded_keys_file.txt', mode='a') as excluded_keys_file:
+                open('test_interactive.bib', mode='r') as input_file, \
+                open('test_interactive_included_keys_file.txt', mode='a') as included_keys_file, \
+                open('test_interactive_excluded_keys_file.txt', mode='a') as excluded_keys_file:
 
             file_retriever = FileRetriever(input_file)
 

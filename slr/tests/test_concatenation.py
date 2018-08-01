@@ -12,8 +12,8 @@ class ConcatenationTest(unittest.TestCase):
         uniques entries are passed on when the two files are merged.
         """
         with \
-                open('tests/test_concatenation_a.bib') as test_file_a, \
-                open('tests/test_concatenation_b.bib') as test_file_b:
+                open('test_concatenation_a.bib') as test_file_a, \
+                open('test_concatenation_b.bib') as test_file_b:
 
             file_retriever_a = FileRetriever(test_file_a)
             file_retriever_b = FileRetriever(test_file_b)

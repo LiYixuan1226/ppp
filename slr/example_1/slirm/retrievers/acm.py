@@ -1,8 +1,8 @@
 import requests
+
 from bibtexparser.bibdatabase import BibDatabase
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import convert_to_unicode
-
 
 
 class ACMRetrieve(object):

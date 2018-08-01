@@ -7,7 +7,7 @@ from slirm.retrievers.file import FileRetriever
 class ExcludeDuplicatesTest(unittest.TestCase):
 
     def test_exclude_duplicates(self):
-        with open('tests/test_exclude_duplicates.bib') as duplicates_file:
+        with open('test_exclude_duplicates.bib') as duplicates_file:
 
             duplicates = FileRetriever(duplicates_file)
             duplicate_entry_filter = DuplicateEntryFilter(duplicates)
