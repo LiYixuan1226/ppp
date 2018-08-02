@@ -30,7 +30,7 @@ with \
         open('excluded_keys.txt', mode='a', encoding='utf-8') as excluded_keys_file, \
         open('slr.bib', encoding='utf-8', mode='w', newline='') as found_file:
 
-    file_retriever = CachingRetriever(FileRetriever(stage_1_file))
+    file_retriever = CachingRetriever(FileRetriever(stage_1_file ))
 
     stage_1_count = CountEntries(file_retriever, "Found [%d] entries in the file.")
 

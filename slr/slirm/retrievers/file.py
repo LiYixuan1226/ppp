@@ -5,6 +5,7 @@ class FileRetriever:
 
     def __init__(self, input_file):
         self.input_file = input_file
+        interpolate_strings = False
 
     def pull(self):
         bibtex_parser = BibTexParser(common_strings=True)

@@ -143,3 +143,10 @@ class IEEEXploreRetrieve(object):
                 return None
 
         return convert_ieee_xplore_json_to_bibtex_db(response.text)
+
+if __name__ == '__main__':
+    query = ''
+    api_key = 'xxbuhzj7q5zfednrb9j49yzq'
+    ieee_retrieve = IEEEXploreRetrieve([query], api_key)
+    bibtex_database = springerlink_retrieve.pull()
+    print(bibtex_database)
