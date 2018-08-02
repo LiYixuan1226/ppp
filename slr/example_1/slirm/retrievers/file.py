@@ -8,6 +8,6 @@ class FileRetriever:
 
 
     def pull(self):
-        bibtex_parser = BibTexParser(common_strings=True, interpolate_strings = False)
+        bibtex_parser = BibTexParser(common_strings=True,interpolate_strings = False)
         self.input_file.seek(0)
         return bibtex_parser.parse(self.input_file.read())
