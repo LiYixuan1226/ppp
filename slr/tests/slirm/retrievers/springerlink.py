@@ -34,7 +34,7 @@ class SpringerLinkRetrieve(object):
         return response.text
 
 if __name__ == '__main__':
-    query = ''
+    query = 'software testing'
     api_key = 'a6cb064309bb238a35a383a30f510748'
     springerlink_retrieve = SpringerLinkRetrieve([query], api_key)
     bibtex_database = springerlink_retrieve.pull()

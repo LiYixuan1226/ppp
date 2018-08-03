@@ -82,7 +82,6 @@ def parse_ieee_json_keywords(ieee_article):
 def convert_ieee_xplore_json_to_bibtex_db(json_string):
 
     result = BibDatabase()
-
     for ieee_article in json.loads(json_string)['articles']:
         new_entry = dict()
 
@@ -125,7 +124,7 @@ class IEEEXploreRetrieve(object):
         self.cookies = {}
 
     def pull(self):
-        url_template = 'http://ieeexploreapi.ieee.org/api/v1/search/articles?querytext=%s&apikey=%s'
+        url_template = 'http://ieeexploreapi.ieee.org/api/v1/search/articles?querytext=%s&apikey=%s&max_records=200'
 
         user_agents = [
             'Mozilla/5.0 (Windows NT 6.1; WOW64)',
@@ -141,12 +140,15 @@ class IEEEXploreRetrieve(object):
             except ConnectionError:
                 # TODO Wrap connection error with a Pipeline Exception.
                 return None
+        print("response:"+response.text)
+        print(len(json.loads(response.text)['articles']))
+
 
         return convert_ieee_xplore_json_to_bibtex_db(response.text)
 
 if __name__ == '__main__':
-    query = ''
+    query = 'software testing'
     api_key = 'xxbuhzj7q5zfednrb9j49yzq'
     ieee_retrieve = IEEEXploreRetrieve([query], api_key)
-    bibtex_database = springerlink_retrieve.pull()
+    bibtex_database = ieee_retrieve.pull()
     print(bibtex_database)

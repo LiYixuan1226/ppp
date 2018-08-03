@@ -35,7 +35,7 @@ class ScienceDirectRetrieve(object):
         return response.text
 
 if __name__ == '__main__':
-    query = ''
+    query = 'software testing'
     api_key = '5b8627370566798169844f272c6af106'
     sd_retrieve = ScienceDirectRetrieve([query], api_key)
     bibtex_database = sd_retrieve.pull()
