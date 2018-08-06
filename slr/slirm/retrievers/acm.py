@@ -34,3 +34,4 @@ class ACMRetrieve(object):
             result.get_entry_list().append(bibtex_parser.parse(response.text).get_entry_list())
 
         return result
+

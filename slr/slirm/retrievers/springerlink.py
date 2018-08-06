@@ -30,7 +30,7 @@ class SpringerLinkRetrieve(object):
             except ConnectionError:
                 # TODO Wrap connection error with a Pipeline Exception.
                 return None
-
+        print("response:" + response.text)
         return response.text
 
 if __name__ == '__main__':
@@ -38,4 +38,4 @@ if __name__ == '__main__':
     api_key = 'a6cb064309bb238a35a383a30f510748'
     springerlink_retrieve = SpringerLinkRetrieve([query], api_key)
     bibtex_database = springerlink_retrieve.pull()
-    print(bibtex_database)
+    print("bibtex:"+bibtex_database)
