@@ -80,51 +80,81 @@ def parse_ieee_json_keywords(ieee_article):
 
 
 def convert_ieee_xplore_json_to_bibtex_db(json_string):
-
     result = BibDatabase()
     for ieee_article in json.loads(json_string)['articles']:
-        new_entry = dict()
+        try:
+            new_entry = dict()
 
-        new_entry['ID'] = ieee_article['article_number']
-        new_entry['ENTRYTYPE'] = parse_ieee_json_type(ieee_article)
+            new_entry['ID'] = ieee_article['article_number']
+            new_entry['ENTRYTYPE'] = parse_ieee_json_type(ieee_article)
 
-        new_entry['abstract'] = parse_ieee_abstract(ieee_article)
-        new_entry['title'] = ieee_article['title']
+            new_entry['abstract'] = parse_ieee_abstract(ieee_article)
+            new_entry['title'] = ieee_article['title']
 
-        if 'authors' in ieee_article:
-            new_entry['author'] = parse_ieee_json_authors(ieee_article)
+            if 'authors' in ieee_article:
+                new_entry['author'] = parse_ieee_json_authors(ieee_article)
 
-        new_entry['keywords'] = parse_ieee_json_keywords(ieee_article)
+            new_entry['keywords'] = parse_ieee_json_keywords(ieee_article)
 
-        new_entry['url'] = ieee_article['pdf_url']
+            new_entry['url'] = ieee_article['pdf_url']
 
-        if new_entry['ENTRYTYPE'] == 'article':
-            parse_extra_bibtex_article_fields(ieee_article, new_entry)
+            if new_entry['ENTRYTYPE'] == 'article':
+                parse_extra_bibtex_article_fields(ieee_article, new_entry)
 
-        elif new_entry['ENTRYTYPE'] == 'inproceedings':
-            new_entry['booktitle'] = ieee_article['publication_title']
+            elif new_entry['ENTRYTYPE'] == 'inproceedings':
+                new_entry['booktitle'] = ieee_article['publication_title']
 
-        article_date = parse_ieee_json_date(ieee_article)
-        new_entry['year'] = article_date.strftime("%Y")
-        new_entry['month'] = article_date.strftime("%B")
+            article_date = parse_ieee_json_date(ieee_article)
+            new_entry['year'] = article_date.strftime("%Y")
+            new_entry['month'] = article_date.strftime("%B")
 
-        new_entry['pages'] = ("%s-%s") % (ieee_article['start_page'], ieee_article['end_page'])
+            new_entry['pages'] = ("%s-%s") % (ieee_article['start_page'], ieee_article['end_page'])
 
-        result.get_entry_list().append(new_entry)
+            result.get_entry_list().append(new_entry)
+        except AttributeError:
+            continue
+        except KeyError:
+            continue
 
     return result
 
 
 class IEEEXploreRetrieve(object):
 
-    def __init__(self, queries, api_key):
+    def __init__(self, queries, api_key, maximum_results=-1):
         self.api_key = api_key
         self.queries = queries
+
+        self.maximum_results = maximum_results
 
         self.cookies = {}
 
     def pull(self):
-        url_template = 'http://ieeexploreapi.ieee.org/api/v1/search/articles?querytext=%s&apikey=%s&max_records=200'
+
+        result = BibDatabase()
+
+        for query in self.queries:
+
+            start=1
+            while len(result.entries) < self.maximum_results or self.maximum_results == -1:
+                response = self.retrieve_page_of_results(query, start)
+                # print("response:" + response.text)
+                new_entries = convert_ieee_xplore_json_to_bibtex_db(response.text).entries
+                result.entries.extend(new_entries)
+                print(len(result.entries), self.maximum_results)
+
+            if eval(response.text)['total_records']=="0":
+                break
+
+            start += 200
+
+        #print(eval(response.text)['total_records'])
+        #print("response:"+response.text)
+        #print(len(json.loads(response.text)['articles']))
+        return result
+
+    def retrieve_page_of_results(self, query, start):
+        url_template = 'http://ieeexploreapi.ieee.org/api/v1/search/articles?querytext=%s&apikey=%s&start_record=%d&max_records=200'
 
         user_agents = [
             'Mozilla/5.0 (Windows NT 6.1; WOW64)',
@@ -133,18 +163,12 @@ class IEEEXploreRetrieve(object):
 
         headers = {'User-Agent': " ".join(user_agents)}
 
-        for query in self.queries:
-            url = url_template % (query, self.api_key)
-            try:
-                response = requests.get(url, cookies=self.cookies, headers=headers)
-            except ConnectionError:
-                # TODO Wrap connection error with a Pipeline Exception.
-                return None
-        print("response:"+response.text)
-        print(len(json.loads(response.text)['articles']))
-
-
-        return convert_ieee_xplore_json_to_bibtex_db(response.text)
+        url = url_template % (query, self.api_key, start)
+        try:
+            return requests.get(url, cookies=self.cookies, headers=headers)
+        except ConnectionError:
+            # TODO Wrap connection error with a Pipeline Exception.
+            return None
 
 if __name__ == '__main__':
     query = 'software testing'

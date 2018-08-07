@@ -11,7 +11,7 @@ class IEEEXploreRetrieveTestCase(unittest.TestCase):
 
         query = 'software testing'
         api_key = 'xxbuhzj7q5zfednrb9j49yzq'
-        ieee_xplore_retrieve = IEEEXploreRetrieve([query], api_key)
+        ieee_xplore_retrieve = IEEEXploreRetrieve([query], api_key, maximium_results=1000)
         bibtex_database = ieee_xplore_retrieve.pull()
 
         self.assertGreater(len(bibtex_database.get_entry_list()), 0)

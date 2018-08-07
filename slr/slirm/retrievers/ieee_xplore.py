@@ -1,6 +1,7 @@
 import datetime
 import json
 import requests
+import os,  urllib.request
 
 from bibtexparser.bibdatabase import BibDatabase
 
@@ -17,6 +18,8 @@ def parse_ieee_json_type(ieee_article):
             return 'proceedings'
     elif ieee_type == 'Standards':
         return 'manual'
+    elif ieee_type == 'Books':
+        return 'book'
     else:
         print(ieee_article)
 
@@ -79,9 +82,16 @@ def parse_ieee_json_keywords(ieee_article):
     return ", ".join(entry_terms)
 
 
+
 def convert_ieee_xplore_json_to_bibtex_db(json_string):
     result = BibDatabase()
+    big_list_of_entries = list()
+    count = 0
     for ieee_article in json.loads(json_string)['articles']:
+        print(ieee_article)
+        big_list_of_entries.append(ieee_article)
+        count += 1
+        #print(big_list_of_entries[count])
         try:
             new_entry = dict()
 
@@ -115,51 +125,100 @@ def convert_ieee_xplore_json_to_bibtex_db(json_string):
             continue
         except KeyError:
             continue
-
+    download(big_list_of_entries,count)
     return result
+
+def download(lists,count):
+    i = 0
+    path = 'C:\\try'
+    for record in  lists:
+        if i >= 10:
+            break
+        url = str(record['pdf_url'])
+        file_name = str(record['title'])+".pdf"
+        file_name = file_name.replace(" ", "_")
+        dest_dir = os.path.join(path, file_name)
+        print(dest_dir)
+        print(url)
+        print(file_name)
+        urlretrieveMethod(dest_dir, url)
+        i += 1
+
+
+def urlretrieveMethod(dest_dir, url):
+        try:
+            urllib.request.urlretrieve(url , dest_dir)
+            #print("haha")
+        except:
+            print('\tError retrieving the URL:', dest_dir)
 
 
 class IEEEXploreRetrieve(object):
 
-    def __init__(self, queries, api_key):
+    def __init__(self, queries, api_key, maximum_results=-1):
         self.api_key = api_key
         self.queries = queries
+
+        self.maximum_results = maximum_results
 
         self.cookies = {}
 
     def pull(self):
-        start=1
-        while True:
-            url_template = 'http://ieeexploreapi.ieee.org/api/v1/search/articles?querytext=%s&apikey=%s&start_record='+str(start)+'&max_records=200'
 
-            user_agents = [
-                'Mozilla/5.0 (Windows NT 6.1; WOW64)',
-                'AppleWebKit/537.36 (KHTML, like Gecko)',
-                'Chrome/35.0.1916.114 Safari/537.36']
+        result = BibDatabase()
 
-            headers = {'User-Agent': " ".join(user_agents)}
+        for query in self.queries:
 
-            for query in self.queries:
-                url = url_template % (query, self.api_key)
-                try:
-                    response = requests.get(url, cookies=self.cookies, headers=headers)
-                except ConnectionError:
-                    # TODO Wrap connection error with a Pipeline Exception.
-                    return None
+            start = 1
+            while len(result.entries) < self.maximum_results or self.maximum_results == -1:
 
-            start+=200
+                # gets about 200 results from ieee
+                response = self.retrieve_page_of_results(query, start)
+
+                # converts the 200 json entries to bibtex entries
+                new_entries = convert_ieee_xplore_json_to_bibtex_db(response.text).entries
+
+                # adds 200 entries to result database
+                result.entries.extend(new_entries)
+                print(len(result.entries), self.maximum_results)
+
             if eval(response.text)['total_records']=="0":
                 break
-        print(eval(response.text)['total_records'])
-        print("response:"+response.text)
-        print(len(json.loads(response.text)['articles']))
 
+            start += 200
 
-        return convert_ieee_xplore_json_to_bibtex_db(response.text)
+        #print(eval(response.text)['total_records'])
+        #print("response:"+response.text)
+        #print(len(json.loads(response.text)['articles']))
 
-if __name__ == '__main__':
+        #big_list_of_entries = list()
+        #big_list_of_entries = big_list_of_entries[0:self.maximum_results]
+
+        return result
+
+    def retrieve_page_of_results(self, query, start):
+        url_template = 'http://ieeexploreapi.ieee.org/api/v1/search/articles?querytext=%s&apikey=%s&start_record=%d&max_records=200'
+
+        user_agents = [
+            'Mozilla/5.0 (Windows NT 6.1; WOW64)',
+            'AppleWebKit/537.36 (KHTML, like Gecko)',
+            'Chrome/35.0.1916.114 Safari/537.36']
+
+        headers = {'User-Agent': " ".join(user_agents)}
+
+        url = url_template % (query, self.api_key, start)
+        try:
+            return requests.get(url, cookies=self.cookies, headers=headers)
+        except ConnectionError:
+            # TODO Wrap connection error with a Pipeline Exception.
+            return None
+
+def main():
     query = 'software testing'
     api_key = 'xxbuhzj7q5zfednrb9j49yzq'
-    ieee_retrieve = IEEEXploreRetrieve([query], api_key)
+    ieee_retrieve = IEEEXploreRetrieve([query], api_key, maximum_results=1000)
     bibtex_database = ieee_retrieve.pull()
     print(bibtex_database)
+
+if __name__ == '__main__':
+    main()
