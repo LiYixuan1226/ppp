@@ -132,7 +132,7 @@ def download(lists,count):
     i = 0
     path = 'C:\\try'
     for record in  lists:
-        if i >= 10:
+        if i >= count:
             break
         url = str(record['pdf_url'])
         file_name = str(record['title'])+".pdf"
